@@ -8,10 +8,10 @@
         <ToolbarItem Name="Home" Clicked="navHome" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout
-            Spacing="20"
+        <StackLayout
             Margin="20,10,20,10">
+            <StackLayout
+            Spacing="20">
                 <Label
                     Text="Last Position:"
                     FontSize="50"
@@ -50,6 +50,92 @@
 
             </StackLayout>
             <BoxView HeightRequest="1" Color="Gray"/>
+            <StackLayout
+                Spacing="20"
+                Margin="0,20,0,0">
+                <Label
+                    Text="Bancroft Conversion:"
+                    FontSize="35"
+                    TextDecorations="Underline"
+                    FontAttributes="Bold"
+                    />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <Entry
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        x:Name="banStacks"
+                        Keyboard="Numeric"
+                        HorizontalOptions="Center"
+                        WidthRequest="150"
+                        MaxLength="3"
+                        Placeholder="Stacks (13 High)"
+                    />
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        x:Name="banOdds"
+                        Keyboard="Numeric"
+                        HorizontalOptions="Center"
+                        WidthRequest="150"
+                        MaxLength="2"
+                        Placeholder="Trays"
+                    />
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="Stacks (14 High)"
+                        FontSize="20"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="Trays"
+                        FontSize="20"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"/>
+
+                    <Label
+                        x:Name="bancroftStacks"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="-"
+                        FontSize="40"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="GreenYellow"/>
+                    <Label
+                        x:Name="bancroftTrays"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Text="-"
+                        FontSize="40"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="GreenYellow"/>
+
+                    <Button
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        BorderColor="Black"
+                        BorderWidth="1"
+                        CornerRadius="10"
+                        Text="Calculate"
+                        HorizontalOptions="End"
+                        VerticalOptions="CenterAndExpand"
+                        HeightRequest="60"
+                        WidthRequest="150"
+                        Clicked="calculateBancroft"/>
+                </Grid>
+                
+            </StackLayout>
 
         </StackLayout>
         

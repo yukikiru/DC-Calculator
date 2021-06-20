@@ -40,6 +40,12 @@ namespace Assignment2.Model
             return trays;
         }
 
+        //Calculate stacks from trays (doesn't round or calculate odds)
+        public static int traysToStacks(int trays)
+        {
+            return trays/14;
+        }
+
         //Loading Maths
         public static double loadingPoition(int stacksOnTrailer)
         {
