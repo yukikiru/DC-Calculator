@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Assignment2.MainPage"
+             Title="Weston DC App">
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="Center">
+            <Label>This will be Weather</Label>
+            <Label>This will be More Weather stuff</Label>
+            <Button
+                Text="Calculator"
+                Clicked="navToCalculator"/>
+            <Button
+                Text="Hour Tracker"
+                Clicked="Button_Clicked"
+                />
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

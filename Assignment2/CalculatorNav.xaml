@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Assignment2.CalculatorNav"
+    Title="Calculator">
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Grid
+                Grid.Row="1"
+                Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+            <Button
+                Grid.Column="0"
+                Grid.Row="0"
+                BorderColor="Black"
+                BorderWidth="1"
+                CornerRadius="10"
+                Text="Pre Dispatch"
+                Clicked="Button_Clicked"/>
+            <Button
+                Grid.Column="1"
+                Grid.Row="0"
+                BorderColor="Black"
+                BorderWidth="1"
+                CornerRadius="10"
+                Text="Loading"
+                Clicked="Button_Clicked"/>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
