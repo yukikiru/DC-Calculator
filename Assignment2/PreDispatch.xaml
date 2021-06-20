@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Assignment2.PreDispatch"
+    Title="Pre-Dispatch">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Home" Clicked="navHome" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            Margin="20,10,20,10">
+            <StackLayout
+                Spacing="20"
+                Margin="0,20,0,0">
+                <Label
+                    Text="Trays to Stacks:"
+                    FontSize="45"
+                    TextDecorations="Underline"
+                    FontAttributes="Bold"
+                    />
+                <Entry
+                    x:Name="PDTrayEntry"
+                    Keyboard="Numeric"
+                    WidthRequest="200"
+                    HorizontalOptions="Start"
+                    MaxLength="4"
+                    Placeholder="Tray Count"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Stacks"
+                        FontSize="20"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"/>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="Trays"
+                        FontSize="20"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"/>
+
+                    <Label
+                        x:Name="PDStacks"
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="-"
+                        FontSize="40"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="GreenYellow"/>
+                    <Label
+                        x:Name="PDTrays"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="-"
+                        FontSize="40"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="GreenYellow"/>
+
+                    <Button
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        BorderColor="Black"
+                        BorderWidth="1"
+                        CornerRadius="10"
+                        Text="Calculate"
+                        HorizontalOptions="End"
+                        VerticalOptions="CenterAndExpand"
+                        HeightRequest="60"
+                        WidthRequest="150"
+                        Clicked="calculateStacksFromTrays"/>
+                </Grid>
+                
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

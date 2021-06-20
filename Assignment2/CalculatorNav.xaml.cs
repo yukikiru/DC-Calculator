@@ -15,19 +15,21 @@ namespace Assignment2
             InitializeComponent();
         }
 
-        void Button_Clicked(System.Object sender, System.EventArgs e)
-        {
-            DisplayAlert("Guten Morgen!", "Du hast den " + (sender as Button).Text + " Knopf gedrükt!", "Okay");
-        }
-
         async void navToLoading(System.Object sedner, System.EventArgs e)
         {
             await Navigation.PushAsync(new Loading(ref m));
+        }
+
+        async void navToPD(System.Object sedner, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new PreDispatch(ref m));
         }
 
         async void navHome(System.Object sender, System.EventArgs e)
         {
             await Navigation.PopToRootAsync();
         }
+
+
     }
 }

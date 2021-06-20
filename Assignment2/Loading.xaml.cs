@@ -101,7 +101,7 @@ namespace Assignment2
                     {
                         int trayCount = DCMath.convert13ToTrays(stacks, trays);
                         int newStacks = DCMath.traysToStacks(trayCount);
-                        int newTrays = trayCount - (newStacks * 14);
+                        int newTrays = DCMath.traysToOdds(trayCount); //Trays to odds
                         bancroftStacks.Text = newStacks.ToString();
                         bancroftTrays.Text = newTrays.ToString();
                     }

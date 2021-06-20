@@ -46,6 +46,13 @@ namespace Assignment2.Model
             return trays/14;
         }
 
+        //Calculates the odds from total trays (doesn't count full stacks)
+        public static int traysToOdds(int trays)
+        {
+            int stacks = traysToStacks(trays);
+            return trays - (stacks*14);
+        }
+
         //Loading Maths
         public static double loadingPoition(int stacksOnTrailer)
         {
