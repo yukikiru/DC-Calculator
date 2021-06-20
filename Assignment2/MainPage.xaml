@@ -9,9 +9,19 @@
             <Label>This will be Weather</Label>
             <Label>This will be More Weather stuff</Label>
             <Button
+                Grid.Column="0"
+                Grid.Row="0"
+                BorderColor="Black"
+                BorderWidth="1"
+                CornerRadius="10"
                 Text="Calculator"
                 Clicked="navToCalculator"/>
             <Button
+                Grid.Column="0"
+                Grid.Row="0"
+                BorderColor="Black"
+                BorderWidth="1"
+                CornerRadius="10"
                 Text="Hour Tracker"
                 Clicked="Button_Clicked"
                 />

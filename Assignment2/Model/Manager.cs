@@ -6,5 +6,8 @@ namespace Assignment2.Model
         public Manager()
         {
         }
+
+        public void popup() {
+        }
     }
 }

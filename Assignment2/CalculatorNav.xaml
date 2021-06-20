@@ -4,6 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Assignment2.CalculatorNav"
     Title="Calculator">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Home" Clicked="navHome" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             HorizontalOptions="Center"
@@ -12,8 +15,12 @@
                 Grid.Row="1"
                 Grid.Column="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
 
             <Button
                 Grid.Column="0"
@@ -21,7 +28,7 @@
                 BorderColor="Black"
                 BorderWidth="1"
                 CornerRadius="10"
-                Text="Pre Dispatch"
+                Text="Pre- Dispatch"
                 Clicked="Button_Clicked"/>
             <Button
                 Grid.Column="1"
@@ -30,7 +37,7 @@
                 BorderWidth="1"
                 CornerRadius="10"
                 Text="Loading"
-                Clicked="Button_Clicked"/>
+                Clicked="navToLoading"/>
 
             </Grid>
         </StackLayout>

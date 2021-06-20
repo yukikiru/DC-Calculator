@@ -7,7 +7,8 @@ namespace Assignment2
 {
     public partial class App : Application
     {
-        //Sets up common Manager for all pages here
+
+        //Set up global manager that is shared by all pages
         Manager m;
         public App()
         {

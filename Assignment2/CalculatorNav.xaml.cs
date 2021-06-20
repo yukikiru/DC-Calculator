@@ -19,5 +19,15 @@ namespace Assignment2
         {
             DisplayAlert("Guten Morgen!", "Du hast den " + (sender as Button).Text + " Knopf gedrükt!", "Okay");
         }
+
+        async void navToLoading(System.Object sedner, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new Loading(ref m));
+        }
+
+        async void navHome(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PopToRootAsync();
+        }
     }
 }

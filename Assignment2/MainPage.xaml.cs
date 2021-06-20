@@ -25,7 +25,7 @@ namespace Assignment2
 
         void Button_Clicked(System.Object sender, System.EventArgs e)
         {
-            DisplayAlert("Button", "I am " + (sender as Button).Text, "Okay!");
+            DisplayAlert("Button", "I'm a filler button", "Okay!");
         }
     }
 }
