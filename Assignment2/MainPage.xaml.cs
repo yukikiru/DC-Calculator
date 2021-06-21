@@ -23,9 +23,9 @@ namespace Assignment2
             await Navigation.PushAsync(new CalculatorNav(ref m));
         }
 
-        void Button_Clicked(System.Object sender, System.EventArgs e)
+        async void navToHourTracker(System.Object sender, System.EventArgs e)
         {
-            DisplayAlert("Button", "I'm a filler button", "Okay!");
+            await Navigation.PushAsync(new HoursNav(ref m));
         }
     }
 }

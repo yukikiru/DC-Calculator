@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Assignment2.Model.HoursNav"
+    Title="Hour Tracker">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Home" Clicked="navHome" Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+            <Grid
+                Grid.Row="1"
+                Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+
+            <Button
+                Grid.Column="0"
+                Grid.Row="0"
+                BorderColor="Black"
+                BorderWidth="1"
+                CornerRadius="10"
+                Text="Add Punch Record"
+                Clicked="navToAddRecord"/>
+            <Button
+                Grid.Column="1"
+                Grid.Row="0"
+                BorderColor="Black"
+                BorderWidth="1"
+                CornerRadius="10"
+                Text="View Hours"
+                Clicked="navToRecordView"/>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

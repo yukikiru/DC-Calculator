@@ -23,7 +23,7 @@
                 BorderWidth="1"
                 CornerRadius="10"
                 Text="Hour Tracker"
-                Clicked="Button_Clicked"
+                Clicked="navToHourTracker"
                 />
         </StackLayout>
     </ContentPage.Content>

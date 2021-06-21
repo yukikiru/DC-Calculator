@@ -53,6 +53,12 @@ namespace Assignment2.Model
             return trays - (stacks*14);
         }
 
+        //Calculate Estimated weight of trailer by stacks
+        public static int calculateWeight(int stacks)
+        {
+            return stacks * 200;
+        }
+
         //Loading Maths
         public static double loadingPoition(int stacksOnTrailer)
         {

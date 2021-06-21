@@ -101,7 +101,7 @@ namespace Assignment2
                     {
                         int trayCount = DCMath.convert13ToTrays(stacks, trays);
                         int newStacks = DCMath.traysToStacks(trayCount);
-                        int newTrays = DCMath.traysToOdds(trayCount); //Trays to odds
+                        int newTrays = DCMath.traysToOdds(trayCount);
                         bancroftStacks.Text = newStacks.ToString();
                         bancroftTrays.Text = newTrays.ToString();
                     }
@@ -109,6 +109,37 @@ namespace Assignment2
             }catch(Exception ex)
             {
                 DisplayAlert("Error",ex.Message,"Okay");
+            }
+        }
+
+        //Calculates estimated weight based on stacks
+        void calculateTrailerWeight(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+
+                if (String.IsNullOrWhiteSpace(weightEntry.Text))
+                {
+                    throw new Exception("Stacks must have a value");
+                }
+                else
+                {
+                    int stacks = Int32.Parse(weightEntry.Text);
+                    
+                    if (stacks > 104 || stacks < 1)
+                    {
+                        throw new Exception("Stacks should be less than 104 and more than 0");
+                    }
+                    else
+                    {
+                        int weight = DCMath.calculateWeight(stacks);
+                        trailerWeight.Text = weight.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Error", ex.Message, "Okay");
             }
         }
     }
