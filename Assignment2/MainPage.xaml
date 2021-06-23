@@ -5,9 +5,59 @@
              Title="Weston DC App">
     <ContentPage.Content>
         <StackLayout
-            HorizontalOptions="Center">
-            <Label>This will be Weather</Label>
-            <Label>This will be More Weather stuff</Label>
+            HorizontalOptions="Center"
+            Margin="20,0,20,0">
+            <Label
+                Margin="0,55,0,0"
+                x:Name="weatherLabel"
+                FontSize="30"
+                TextColor="Aquamarine"
+                Text="Weather For:"/>
+            <Label
+                x:Name="conditions"
+                Text="-"
+                FontSize="20"
+                TextColor="Aqua"/>
+            <Label
+                x:Name="current"
+                FontSize="25"
+                Text="Current Temperature: "
+                TextColor="pink"/>
+            <Label
+                x:Name="feelsLike"
+                FontSize="25"
+                Text="Feels Like: "
+                TextColor="Pink"/>
+            <Grid>
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="Daily Minimum:"
+                    TextColor="Red"/>
+                <Label
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Text="Daily Maximum:"
+                    TextColor="Red"/>
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Text="-"
+                    TextColor="Red"
+                    x:Name="dailyMin"/>
+                <Label
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Text="-"
+                    TextColor="Red"
+                    x:Name="dailyMax"/>
+            </Grid>
+            <Label
+                Margin="0,0,0,55"
+                FontSize="25"
+                Text="Humidity: "
+                TextColor="Red"
+                x:Name="humidity"/>
             <Button
                 Grid.Column="0"
                 Grid.Row="0"
