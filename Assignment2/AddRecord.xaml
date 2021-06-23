@@ -8,7 +8,9 @@
         <ToolbarItem Name="Home" Clicked="navHome" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <TableView Intent="Form">
+        <StackLayout
+            Margin="10,10,10,10">
+            <TableView Intent="Form">
             <TableRoot>
                 <TableSection Title="Add Punch Record">
                     <ViewCell>
@@ -17,6 +19,7 @@
                                 Text="Date: "
                                 VerticalOptions="Center"/>
                             <DatePicker
+                                x:Name="punchDate"
                             MinimumDate="01/01/2018"
                             MaximumDate="12/31/2099"
                             Format="D"/>
@@ -28,11 +31,19 @@
                                 Text="Time: "
                                 VerticalOptions="Center"/>
                             <TimePicker
-                            Format="T"/>
+                                x:Name="punchTime"
+                            Format="HH:mm"/>
                         </StackLayout>
+                    </ViewCell>
+                    
+                    <ViewCell>
+                        <Button
+                            Text="Add"
+                            Clicked="addRecord"/>
                     </ViewCell>
                 </TableSection>
             </TableRoot>
         </TableView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

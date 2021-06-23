@@ -10,7 +10,9 @@
     <ContentPage.Content>
         <StackLayout
             Margin="20,10,20,10">
-            <StackLayout
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout
             Spacing="20">
                 <Label
                     Text="Last Position:"
@@ -177,6 +179,8 @@
                     </Grid>
 
             </StackLayout>
+                </StackLayout>
+            </ScrollView>
 
         </StackLayout>
         

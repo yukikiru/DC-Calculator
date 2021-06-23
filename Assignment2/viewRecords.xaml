@@ -8,6 +8,25 @@
         <ToolbarItem Name="Home" Clicked="navHome" Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        
+        <StackLayout
+            Margin="10,10,10,10">
+            <!--<Button
+                Text="Clear"
+                Clicked="clearSelection"/>-->
+            <ListView x:Name="WorkWeeks"
+                  ItemSelected="WorkWeeks_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label VerticalOptions="Center" Text="{Binding weekOfYear, StringFormat='Week {0}:'}" HorizontalOptions="Start"/>
+                            <Label VerticalOptions="Center" Text="{Binding days[0].day}" HorizontalOptions="End"/>
+                        </StackLayout>
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
