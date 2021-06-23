@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ViewCell
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Assignment2.TimeCell">
+    <StackLayout Orientation="Horizontal">
+        <Label
+        Text="{Binding timeCellLabel}"
+        VerticalOptions="Center"/>
+        <TimePicker
+            Time="{Binding timeValue}"
+        x:Name="punchTime"
+        Format="HH:mm"/>
+    </StackLayout>
+</ViewCell>

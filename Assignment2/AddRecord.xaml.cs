@@ -16,7 +16,8 @@ namespace Assignment2
         {
             InitializeComponent();
             m = man;
-            punchTime.Time = DateTime.Now.TimeOfDay; //Initialize timepicker to current time
+            timeCell.timeValue = DateTime.Now.TimeOfDay; //Initialize timepicker to current time
+            BindingContext = this;
         }
 
         async void navHome(System.Object sender, System.EventArgs e)
@@ -28,8 +29,8 @@ namespace Assignment2
         {
             try
             {
-                time = punchTime.Time;
-                date = punchDate.Date;
+                time = timeCell.timeValue;
+                date = punchCell.date;
                 m.addPunch(date, time);
                 DisplayAlert("Time", "Time Added: " + date.ToString("MMMM dd, yyyy") + " at " + time.ToString("hh\\:mm"), "okay");
             }

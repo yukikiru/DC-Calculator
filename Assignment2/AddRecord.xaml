@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    xmlns:local="clr-namespace:Assignment2"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Assignment2.AddRecord"
@@ -13,29 +14,10 @@
             <TableView Intent="Form">
             <TableRoot>
                 <TableSection Title="Add Punch Record">
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label
-                                Text="Date: "
-                                VerticalOptions="Center"/>
-                            <DatePicker
-                                x:Name="punchDate"
-                            MinimumDate="01/01/2018"
-                            MaximumDate="12/31/2099"
-                            Format="D"/>
-                        </StackLayout>
-                    </ViewCell>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label
-                                Text="Time: "
-                                VerticalOptions="Center"/>
-                            <TimePicker
-                                x:Name="punchTime"
-                            Format="HH:mm"/>
-                        </StackLayout>
-                    </ViewCell>
-                    
+                   <local:PunchCell dateCellLabel="Date: "
+                                    x:Name="punchCell"/>
+                    <local:TimeCell timeCellLabel="Time: "
+                                    x:Name="timeCell"/>
                     <ViewCell>
                         <Button
                             Text="Add"

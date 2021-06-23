@@ -10,9 +10,6 @@
     <ContentPage.Content>
         <StackLayout
             Margin="10,10,10,10">
-            <!--<Button
-                Text="Clear"
-                Clicked="clearSelection"/>-->
             <ListView x:Name="WorkWeeks"
                   ItemSelected="WorkWeeks_ItemSelected">
             <ListView.ItemTemplate>

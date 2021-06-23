@@ -1,10 +1,14 @@
 ﻿using System;
+using System.ComponentModel;
 namespace Assignment2.Model.Timecard
 {
     //Class for each punch record
-    public class PunchTime
+    public class PunchTime : INotifyPropertyChanged
     {
         private DateTime punchRecord_;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public DateTime punchRecord
         {
             get
@@ -13,7 +17,15 @@ namespace Assignment2.Model.Timecard
             }
             set
             {
+                if(value == punchRecord_)
+                {
+                    return;
+                }
                 punchRecord_ = value;
+                if(PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(punchRecord)));
+                }
             }
         }
         public PunchTime(DateTime date, TimeSpan time)

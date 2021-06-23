@@ -12,6 +12,7 @@ namespace Assignment2
         private int weekIndex_, dayIndex_;
         public Manager m;
         public Day day;
+        TimeSpan time = new TimeSpan();
         public ViewDay(Day d, int weekIndex, int dayIndex, ref Manager man)
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace Assignment2
             {
                 Title = "Daily Punch (Empty)";
             }
+            BindingContext = this;
         }
 
         async void navHome(System.Object sender, System.EventArgs e)
@@ -40,6 +42,35 @@ namespace Assignment2
             var p = (sender as MenuItem).CommandParameter as PunchTime;
             m.removePunch(p, weekIndex_, dayIndex_);
             DisplayAlert("Success", "Punch deleted", "Okay");
+        }
+
+        void dayView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+            PunchTime selected = e.SelectedItem as PunchTime;
+            punchTime.IsEnabled = true;
+            punchTime.timeValue = selected.punchRecord.TimeOfDay;
+        }
+
+        void updateRecord(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                time = punchTime.timeValue;
+                if (dayView.SelectedItem != null)
+                {
+                    int index = day.dailyPunches.IndexOf(dayView.SelectedItem as PunchTime);
+                    m.updatePunch(new PunchTime(day.dailyPunches[index].punchRecord.Date, time), weekIndex_, dayIndex_, index);
+                    DisplayAlert("Time", "Time Updated: " + time.ToString("hh\\:mm"), "okay");
+                }
+                else
+                {
+                    throw new Exception("A punch record must be selected in order to update");
+                }   
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Error", ex.Message, "Okay");
+            }
         }
     }
 }

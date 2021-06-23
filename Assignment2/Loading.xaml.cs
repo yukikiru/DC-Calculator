@@ -11,8 +11,8 @@ namespace Assignment2
         Manager m;
         public Loading(ref Manager man)
         {
-            m = man;
             InitializeComponent();
+            m = man;
         }
 
         //Calculates the last position of stacks on a trailer

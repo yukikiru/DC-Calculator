@@ -39,6 +39,11 @@ namespace Assignment2.Model
             }
         }
 
+        public void updatePunch(PunchTime p, int weekIndex, int dayIndex, int punchIndex)
+        {
+            weeks[weekIndex].days[dayIndex].dailyPunches[punchIndex] = p;
+        }
+
         public void removePunch(PunchTime p, int weekIndex, int dayIndex)
         {
             weeks[weekIndex].days[dayIndex].dailyPunches.Remove(p);

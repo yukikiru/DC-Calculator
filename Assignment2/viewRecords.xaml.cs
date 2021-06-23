@@ -31,13 +31,5 @@ namespace Assignment2
             await Navigation.PushAsync(new viewWeek(val, index, ref m));
         }
 
-        //void clearSelection(System.Object sender, System.EventArgs e)
-        //{
-        //    if(WorkWeeks.SelectedItem != null)
-        //    {
-        //        WorkWeeks.SelectedItem = null;
-        //    }
-        //}
-
     }
 }

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ViewCell
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Assignment2.PunchCell">
+    <StackLayout Orientation="Horizontal">
+        <Label
+        Text="{Binding dateCellLabel}"
+        VerticalOptions="Center"/>
+        <DatePicker
+        x:Name="punchDate"
+            Date="{Binding date}"
+        MinimumDate="01/01/2018"
+        MaximumDate="12/31/2099"
+        Format="D"/>
+    </StackLayout>
+</ViewCell>
