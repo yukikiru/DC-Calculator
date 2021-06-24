@@ -13,6 +13,7 @@ namespace Assignment2
         public Manager m;
         public Day day;
         TimeSpan time = new TimeSpan();
+
         public ViewDay(Day d, int weekIndex, int dayIndex, ref Manager man)
         {
             InitializeComponent();
@@ -36,12 +37,45 @@ namespace Assignment2
         {
             await Navigation.PopToRootAsync();
         }
+        protected async override void OnAppearing()
+        {
+            m.weeks = await m.db.createTable();
+            base.OnAppearing();
+        }
 
-        void deletePunch(System.Object sender, System.EventArgs e)
+        //Deletes punch time. If the day becomes empty the day is deleted and the user is taken back to home page.
+        async void deletePunch(System.Object sender, System.EventArgs e)
         {
             var p = (sender as MenuItem).CommandParameter as PunchTime;
-            m.removePunch(p, weekIndex_, dayIndex_);
-            DisplayAlert("Success", "Punch deleted", "Okay");
+            int punchIndex = 0;
+            for(int i = 0; i < day.dailyPunches.Count; i++)
+            {
+                if(p.punchRecord.Date == day.dailyPunches[i].punchRecord.Date)
+                {
+                    punchIndex = i;
+                    break;
+                }
+            }
+            int dayCount = m.weeks[weekIndex_].days.Count;
+            bool weekRemoved = m.removePunch(weekIndex_, dayIndex_,punchIndex);
+            if (weekRemoved)
+            {
+                m.db.deleteWeek(new WeekModel(m.weeks[weekIndex_]));
+            }
+            else
+            {
+                m.db.updateWeek(new WeekModel(m.weeks[weekIndex_]));
+            }
+
+            if(m.weeks[weekIndex_].days.Count < dayCount)
+            {
+                await DisplayAlert("Success", "Punch deleted, returning home", "Okay");
+                await Navigation.PopToRootAsync();
+            }
+            else
+            {
+                await DisplayAlert("Success", "Punch deleted", "Okay");
+            }
         }
 
         void dayView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
@@ -51,7 +85,7 @@ namespace Assignment2
             punchTime.timeValue = selected.punchRecord.TimeOfDay;
         }
 
-        void updateRecord(System.Object sender, System.EventArgs e)
+        public async void updateRecord(System.Object sender, System.EventArgs e)
         {
             try
             {
@@ -60,7 +94,8 @@ namespace Assignment2
                 {
                     int index = day.dailyPunches.IndexOf(dayView.SelectedItem as PunchTime);
                     m.updatePunch(new PunchTime(day.dailyPunches[index].punchRecord.Date, time), weekIndex_, dayIndex_, index);
-                    DisplayAlert("Time", "Time Updated: " + time.ToString("hh\\:mm"), "okay");
+                    m.db.updateWeek(new WeekModel(m.weeks[weekIndex_]));
+                    await DisplayAlert("Time", "Time Updated: " + time.ToString("hh\\:mm"), "okay");
                 }
                 else
                 {
@@ -69,7 +104,7 @@ namespace Assignment2
             }
             catch (Exception ex)
             {
-                DisplayAlert("Error", ex.Message, "Okay");
+                await DisplayAlert("Error", ex.Message, "Okay");
             }
         }
     }

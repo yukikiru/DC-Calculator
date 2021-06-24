@@ -2,24 +2,26 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Assignment2.Model.Timecard;
+using Newtonsoft.Json;
 namespace Assignment2.Model
 {
     public class Manager
     {
 
-        public ObservableCollection<string> test = new ObservableCollection<string>();
-        public ObservableCollection<PunchTime> punches = new ObservableCollection<PunchTime>();
         public ObservableCollection<WorkWeek> weeks = new ObservableCollection<WorkWeek>();
+        public DBManager db = new DBManager();
+        public ObservableCollection<WeekModel> weekDB = new ObservableCollection<WeekModel>();
         public Manager()
         {
         }
 
-        //Checks what week the new punch record belongs to then tries to add record
-        public void addPunch(DateTime d, TimeSpan t) {
+        //Checks what week the new punch record belongs to then tries to add record. Returns true if week exists, false if its new
+        public bool addPunch(DateTime d, TimeSpan t) {
             DateTime newDate = d;
             var cal = System.Globalization.DateTimeFormatInfo.CurrentInfo.Calendar;
             var d1 = newDate.Date.AddDays(-1 * (int)cal.GetDayOfWeek(newDate));
-            
+
+
             bool same = false;
             for(int i = 0;i < weeks.Count; i++)
             {
@@ -34,8 +36,13 @@ namespace Assignment2.Model
             }
             if (!same)
             {
-                //creatae new week is not the same as any existing
-                weeks.Add(new WorkWeek(new PunchTime(d, t)));
+                WorkWeek w = new WorkWeek(new PunchTime(d, t));
+                weeks.Add(w);
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -44,9 +51,19 @@ namespace Assignment2.Model
             weeks[weekIndex].days[dayIndex].dailyPunches[punchIndex] = p;
         }
 
-        public void removePunch(PunchTime p, int weekIndex, int dayIndex)
+        //Returns true if the week will be removed so it can be removed from the DB
+        public bool removePunch(int weekIndex, int dayIndex, int punchIndex)
         {
-            weeks[weekIndex].days[dayIndex].dailyPunches.Remove(p);
+            weeks[weekIndex].removeRecord(dayIndex,punchIndex);
+            if(weeks[weekIndex].days.Count == 0)
+            {
+                weeks.RemoveAt(weekIndex);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

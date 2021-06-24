@@ -20,6 +20,12 @@ namespace Assignment2
             BindingContext = this;
         }
 
+        protected async override void OnAppearing()
+        {
+            m.weeks = await m.db.createTable();
+            base.OnAppearing();
+        }
+
         async void navHome(System.Object sender, System.EventArgs e)
         {
             await Navigation.PopToRootAsync();
@@ -31,7 +37,15 @@ namespace Assignment2
             {
                 time = timeCell.timeValue;
                 date = punchCell.date;
-                m.addPunch(date, time);
+                bool newWeek = m.addPunch(date, time);
+                if (newWeek)
+                {
+                    m.db.addWeek(new WeekModel(new WorkWeek(new PunchTime(date, time))));
+                }
+                else
+                {
+                    m.db.updateWeek(new WeekModel(new WorkWeek(new PunchTime(date, time))));
+                }
                 DisplayAlert("Time", "Time Added: " + date.ToString("MMMM dd, yyyy") + " at " + time.ToString("hh\\:mm"), "okay");
             }
             catch(Exception ex)
@@ -40,12 +54,5 @@ namespace Assignment2
             }
         }
 
-
-
-        public void MenuItem_Clicked(System.Object sender, System.EventArgs e)
-        {
-            PunchTime val = (sender as MenuItem).CommandParameter as PunchTime;
-            m.punches.Remove(val);
-        }
     }
 }

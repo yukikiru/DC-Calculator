@@ -6,7 +6,7 @@ using Xamarin.Forms;
 namespace Assignment2
 {
     //Custom Time cell
-    public partial class TimeCell : ViewCell, INotifyPropertyChanged
+    public partial class TimeCell : ViewCell
     {
 
         private TimeSpan time_

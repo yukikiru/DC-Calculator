@@ -33,7 +33,15 @@ namespace Assignment2
         async void weekView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
             var val = (e.SelectedItem as Day);
-            int index = week.days.IndexOf(e.SelectedItem as Day);
+            int index = 0;
+            for(int i = 0; i < week.days.Count; i++)
+            {
+                if (week.days[i].day.Equals(val.day))
+                {
+                    index = i;
+                    break;
+                }
+            }
             await Navigation.PushAsync(new ViewDay(val, weekIndex_,index, ref m));
             //weekView.SelectedItem = null;
         }

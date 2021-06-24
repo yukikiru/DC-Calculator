@@ -18,7 +18,13 @@ namespace Assignment2
             WorkWeeks.ItemsSource = m.weeks;
         }
 
-        async void navHome(System.Object sender, System.EventArgs e)
+        protected async override void OnAppearing()
+        {
+            m.weeks = await m.db.createTable();
+            base.OnAppearing();
+        }
+
+            async void navHome(System.Object sender, System.EventArgs e)
         {
             await Navigation.PopToRootAsync();
         }
@@ -27,7 +33,16 @@ namespace Assignment2
         async void WorkWeeks_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
         {
             var val = (e.SelectedItem as WorkWeek);
-            int index = m.weeks.IndexOf(e.SelectedItem as WorkWeek);
+            //int index = m.weeks.IndexOf(e.SelectedItem as WorkWeek);
+            int index = 0;
+            for(int i = 0; i < m.weeks.Count; i++)
+            {
+                if(m.weeks[i].weekOfYear == val.weekOfYear)
+                {
+                    index = i;
+                    break;
+                }
+            }
             await Navigation.PushAsync(new viewWeek(val, index, ref m));
         }
 

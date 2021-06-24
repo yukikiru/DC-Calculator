@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Assignment2.Model;
+using Assignment2.Model.Timecard;
+using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
 namespace Assignment2
 {
@@ -21,6 +24,8 @@ namespace Assignment2
 
         protected async override void OnAppearing()
         {
+            m.weeks = await m.db.createTable();
+
             var weather = await networkManager.GetWeather();
             current.Text = "Current Temperature: " + ((int)(weather.main.temp-273.15)).ToString() + "C";
             feelsLike.Text = "Feels Like: " + ((int)(weather.main.feels_like - 273.15)).ToString() + "C";
@@ -29,6 +34,8 @@ namespace Assignment2
             dailyMin.Text = ((int)(weather.main.temp_min - 273.15)).ToString() + "C";
             dailyMax.Text = ((int)(weather.main.temp_max - 273.15)).ToString() + "C";
             humidity.Text = $"Humidity: {weather.main.humidity}%";
+            base.OnAppearing();
+            
         }
 
         async public void navToCalculator(Object sender, EventArgs e)

@@ -5,11 +5,12 @@ namespace Assignment2.Model.Timecard
     //Contains collection of punch records for a given day
     public class Day
     {
+
         private string day_;
-        public int count = 0;
         public string day
         {
             get { return day_; }
+            set { day_ = value; }
         }
         private ObservableCollection<PunchTime> dailyPunches_ = null;
         public ObservableCollection<PunchTime> dailyPunches
@@ -25,7 +26,7 @@ namespace Assignment2.Model.Timecard
         {
             dailyPunches_ = new ObservableCollection<PunchTime>();
             addPunch(p);
-            day_ = p.punchRecord.DayOfWeek + ", " + p.punchRecord.Day + " " + p.punchRecord.ToString("MMMM") + " " + p.punchRecord.Year;
+            formatDay(p);
         }
 
         public void addPunch(PunchTime p)
@@ -39,9 +40,13 @@ namespace Assignment2.Model.Timecard
             }
             dailyPunches_.Add(p);
         }
-        //public void removePunch(PunchTime p)
-        //{
-        //    dailyPunches_.Remove(p);
-        //}
+        public void removePunch(int index)
+        {
+            dailyPunches_.RemoveAt(index);
+        }
+        public void formatDay(PunchTime p)
+        {
+            day_ = p.punchRecord.DayOfWeek + ", " + p.punchRecord.Day + " " + p.punchRecord.ToString("MMMM") + " " + p.punchRecord.Year;
+        }
     }
 }
