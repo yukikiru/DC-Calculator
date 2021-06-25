@@ -39,7 +39,7 @@ namespace Assignment2
         }
         protected async override void OnAppearing()
         {
-            m.weeks = await m.db.createTable();
+            m.weekDB = await m.db.createTable();
             base.OnAppearing();
         }
 
@@ -57,17 +57,23 @@ namespace Assignment2
                 }
             }
             int dayCount = m.weeks[weekIndex_].days.Count;
+            int weekCount = m.weeks.Count;
             bool weekRemoved = m.removePunch(weekIndex_, dayIndex_,punchIndex);
             if (weekRemoved)
             {
-                m.db.deleteWeek(new WeekModel(m.weeks[weekIndex_]));
+                m.db.deleteWeek(m.weekDB[weekIndex_]);
             }
             else
             {
-                m.db.updateWeek(new WeekModel(m.weeks[weekIndex_]));
+                m.db.updateWeek(m.weekDB[weekIndex_]);
             }
 
-            if(m.weeks[weekIndex_].days.Count < dayCount)
+            if(m.weeks.Count < weekCount)
+            {
+                await DisplayAlert("Success", "Punch deleted, returning home", "Okay");
+                await Navigation.PopToRootAsync();
+            }
+            else if(m.weeks[weekIndex_].days.Count < dayCount)
             {
                 await DisplayAlert("Success", "Punch deleted, returning home", "Okay");
                 await Navigation.PopToRootAsync();
@@ -94,7 +100,7 @@ namespace Assignment2
                 {
                     int index = day.dailyPunches.IndexOf(dayView.SelectedItem as PunchTime);
                     m.updatePunch(new PunchTime(day.dailyPunches[index].punchRecord.Date, time), weekIndex_, dayIndex_, index);
-                    m.db.updateWeek(new WeekModel(m.weeks[weekIndex_]));
+                    m.db.updateWeek(m.weekDB[weekIndex_]);
                     await DisplayAlert("Time", "Time Updated: " + time.ToString("hh\\:mm"), "okay");
                 }
                 else

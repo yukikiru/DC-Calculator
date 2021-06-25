@@ -5,7 +5,7 @@ namespace Assignment2.Model.Timecard
 {
     public class WeekModel
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey, AutoIncrement,Unique]
         public int ID { get; set; }
 
         //JSON string that holds all the information for each day

@@ -24,8 +24,6 @@ namespace Assignment2
 
         protected async override void OnAppearing()
         {
-            m.weeks = await m.db.createTable();
-
             var weather = await networkManager.GetWeather();
             current.Text = "Current Temperature: " + ((int)(weather.main.temp-273.15)).ToString() + "C";
             feelsLike.Text = "Feels Like: " + ((int)(weather.main.feels_like - 273.15)).ToString() + "C";

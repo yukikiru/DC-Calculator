@@ -20,7 +20,9 @@ namespace Assignment2
 
         protected async override void OnAppearing()
         {
-            m.weeks = await m.db.createTable();
+            m.weekDB = await m.db.createTable();
+            m.workDBToWorkWeek();
+            WorkWeeks.ItemsSource = m.weeks;
             base.OnAppearing();
         }
 

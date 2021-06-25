@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Assignment2.Model;
 using Assignment2.Model.Timecard;
-
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace Assignment2
@@ -22,7 +22,9 @@ namespace Assignment2
 
         protected async override void OnAppearing()
         {
-            m.weeks = await m.db.createTable();
+            m.weekDB = new System.Collections.ObjectModel.ObservableCollection<WeekModel>();
+            m.weekDB = await m.db.createTable();
+            m.workDBToWorkWeek();
             base.OnAppearing();
         }
 
@@ -37,14 +39,15 @@ namespace Assignment2
             {
                 time = timeCell.timeValue;
                 date = punchCell.date;
-                bool newWeek = m.addPunch(date, time);
+                int index = 0;
+                bool newWeek = m.addPunch(date, time, ref index);
                 if (newWeek)
                 {
                     m.db.addWeek(new WeekModel(new WorkWeek(new PunchTime(date, time))));
                 }
                 else
                 {
-                    m.db.updateWeek(new WeekModel(new WorkWeek(new PunchTime(date, time))));
+                    m.db.updateWeek(m.weekDB[index]);
                 }
                 DisplayAlert("Time", "Time Added: " + date.ToString("MMMM dd, yyyy") + " at " + time.ToString("hh\\:mm"), "okay");
             }
