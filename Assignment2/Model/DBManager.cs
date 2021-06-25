@@ -39,8 +39,7 @@ namespace Assignment2.Model
 
         public void deleteWeek(WeekModel week)
         {
-            //connection_.DeleteAsync(week);
-            connection_.Table<WeekModel>().DeleteAsync(u => u.JSON == week.JSON);
+            connection_.DeleteAsync(week);
         }
     }
 }

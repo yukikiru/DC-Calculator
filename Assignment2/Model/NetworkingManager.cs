@@ -23,9 +23,6 @@ namespace Assignment2.Model
             else
             {
                 var stringResp = await resp.Content.ReadAsStringAsync();
-                //var dic = JsonConvert.DeserializeObject<Dictionary<string, object>>(stringResp);
-                //var arr = dic.ElementAt(0).Value;
-
                 return JsonConvert.DeserializeObject<WeatherModel>(stringResp);
             }
         }

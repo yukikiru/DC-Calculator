@@ -10,7 +10,7 @@ namespace Assignment2.Model.Timecard
 {
     public class WorkWeek : INotifyPropertyChanged
     {
-
+        //interger value that contains the current week of the year (i.e Jan 1 is week 1)
         private int weekOfYear_;
         public int weekOfYear
         {
@@ -48,7 +48,7 @@ namespace Assignment2.Model.Timecard
             return myCal.GetWeekOfYear(p.punchRecord, myCWR, myFirstDOW);
         }
 
-        //Adds a punch record
+        //Adds a punch record. 
         public void addRecord(PunchTime p)
         {
             //Adds a day if a day already exists
@@ -69,12 +69,14 @@ namespace Assignment2.Model.Timecard
                     weekOfYear_ = getWeekNum(p);
                 }
             }
+            //Will create a new day if no day already exists
             else
             {
                 days_.Add(new Day(p));
                 weekOfYear_ = getWeekNum(p);
             }
         }
+        //Removes a punch record, if the day is empty will remove
         public void removeRecord(int index, int punchIndex)
         {
             days_[index].removePunch(punchIndex);

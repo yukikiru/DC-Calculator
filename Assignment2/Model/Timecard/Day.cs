@@ -5,7 +5,7 @@ namespace Assignment2.Model.Timecard
     //Contains collection of punch records for a given day
     public class Day
     {
-
+        //Formatted string for day of week
         private string day_;
         public string day
         {
@@ -29,6 +29,7 @@ namespace Assignment2.Model.Timecard
             formatDay(p);
         }
 
+        //Add a punch record to a day
         public void addPunch(PunchTime p)
         {
             foreach(PunchTime pt in dailyPunches_)
@@ -44,6 +45,7 @@ namespace Assignment2.Model.Timecard
         {
             dailyPunches_.RemoveAt(index);
         }
+        //Formats day for viewability
         public void formatDay(PunchTime p)
         {
             day_ = p.punchRecord.DayOfWeek + ", " + p.punchRecord.Day + " " + p.punchRecord.ToString("MMMM") + " " + p.punchRecord.Year;
