@@ -14,6 +14,7 @@ namespace Assignment2
         public Day day;
         TimeSpan time = new TimeSpan();
 
+        //Gets a day object from the viewWeek page, the week's index, day index and a reference to the manager
         public ViewDay(Day d, int weekIndex, int dayIndex, ref Manager man)
         {
             InitializeComponent();
@@ -91,6 +92,7 @@ namespace Assignment2
             punchTime.timeValue = selected.punchRecord.TimeOfDay;
         }
 
+        //Update selected punch time
         public async void updateRecord(System.Object sender, System.EventArgs e)
         {
             try

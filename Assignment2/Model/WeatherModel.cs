@@ -37,13 +37,6 @@ namespace Assignment2.Model
         public double temp_max;
         public int pressure;
         public int humidity;
-
-      //  "temp":292.92,
-      //"feels_like":292.99,
-      //"temp_min":291.58,
-      //"temp_max":294.74,
-      //"pressure":1003,
-      //"humidity":78
     }
     public class Weather
     {
